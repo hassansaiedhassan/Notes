@@ -1,0 +1,67 @@
+<section class="login">
+  <div class="container card my-5">
+    <div class="row">
+      <div class="col-md-6">
+        <img src="./assets/images/Login-rafiki.svg" class="w-100" alt="" />
+      </div>
+      <div class="col-md-6 d-flex align-items-center justify-content-center">
+        <div class="login-form w-100">
+          <form (ngSubmit)="handleLogin(loginForm)" [formGroup]="loginForm">
+            <div *ngIf="abiError" id="alert">
+              <p>{{ abiError }}</p>
+            </div>
+            <label for="email">Email:</label>
+            <input
+              formControlName="email"
+              class="form-control mb-2"
+              id="email"
+              type="text"
+            />
+            <div
+              id="alert"
+              *ngIf="
+                loginForm.get('email')?.errors &&
+                loginForm.get('email')?.touched
+              "
+            >
+              <p *ngIf="loginForm.get('email')?.getError('required')">
+                Email are required !
+              </p>
+              <p *ngIf="loginForm.get('email')?.getError('email')">
+                Email are incorrect !
+              </p>
+            </div>
+
+            <label for="password">Password:</label>
+            <input
+              formControlName="password"
+              class="form-control mb-2"
+              id="password"
+              type="password"
+            />
+
+            <div
+              id="alert"
+              *ngIf="
+                loginForm.get('password')?.errors &&
+                loginForm.get('password')?.touched
+              "
+            >
+              <p *ngIf="loginForm.get('password')?.getError('required')">
+                password are required !
+              </p>
+            </div>
+
+            <button
+              type="submit"
+              class="btn login-button my-2 w-100 d-block m-auto"
+            >
+              <i *ngIf="status" class="fas fa-spinner fa-spin"></i>
+              <span *ngIf="!status"> Login </span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
