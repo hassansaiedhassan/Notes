@@ -48,7 +48,7 @@
             ></button>
           </div>
           <div class="modal-body">
-            <form [formGroup]="addNoteForm" (ngSubmit)="addNote(addNoteForm)">
+            <form [formGroup]="noteEditForm" (ngSubmit)="addNote(noteEditForm)">
               <input
                 formControlName="title"
                 class="form-control my-1"

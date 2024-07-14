@@ -59,6 +59,7 @@ this.spinner.show();
   ,error:(err)=>
   {
     console.log(err);
+    this.spinner.hide();
   }
 })
 }
@@ -86,13 +87,14 @@ deleteNote(){
       },500)
     },
     error:(err)=>
-    {console.log(err)}
+    {
+      this.spinner.hide();
+    }
   })
 }
 ngOnInit(): void {
-if(this.len !=0)
 this.getNote();
 
-console.log(this.notes)
+// console.log(this.notes)
 }
 }
